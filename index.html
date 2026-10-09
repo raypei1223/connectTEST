@@ -95,7 +95,7 @@ async function start(){
  if(S.running)return;
  const room=$('room').value.trim();if(!room){$('room').focus();return;}
  const root=($('root').value.trim()||'p2ptest').replace(/^\/+|\/+$/g,'');
- fresh();S.root=root;logs.length=0;$('log').innerHTML='';tStart=now();S.running=true;setBtns();
+ const keepSrv=S.srv;fresh();S.srv=keepSrv;S.root=root;logs.length=0;$('log').innerHTML='';tStart=now();S.running=true;setBtns();
  log(`開始: 合言葉="${room}" 保存先=${root}`);
  if(typeof RTCPeerConnection==='undefined'){issue('ng','このブラウザはWebRTC(RTCPeerConnection)が使えません');return fin();}
  if(typeof firebase==='undefined'){issue('ng','Firebase SDKを読み込めませんでした。gstatic.com に届かない環境です（この状態ではゲームの協力プレイも使えません）');return fin();}
